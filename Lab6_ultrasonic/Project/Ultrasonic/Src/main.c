@@ -247,6 +247,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 				{
 						uwDiffCapture1 = 0;
 				}
+				// 학번 : 201302480, 이름 : 정석현
 				printf("\r\n Value Right : %d cm", uwDiffCapture1/58);
 				
 				if (uwDiffCapture1/58 < 10){
