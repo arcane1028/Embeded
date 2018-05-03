@@ -468,30 +468,30 @@ static void EXTILine_Config(void)
  {
 	switch(GPIO_Pin)
 	{
-		case GPIO_PIN_15:
-			encoder_right = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
-		if(encoder_right == 0)
+		case GPIO_PIN_15:												// 인코더 2, 15 PIN에서 감지한 경우
+			encoder_right = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3); // 3번 핀값 읽어옴
+		if(encoder_right == 0)  										// 읽어온 핀 값과 0 비교, 정회전인 경우
 		{
-			motorInterrupt1 ++;
-			encoder_right = READY;
+			motorInterrupt1 ++;  											// 모터1 인터럽트 값 증가, 인코더와 같다.
+			encoder_right = READY; 							//  준비상태(3)로 변경
 		}
-		else if (encoder_right == 1)
+		else if (encoder_right == 1) 						// 읽어온 핀 값과 1 비교, 역회전인 경우
 		{
-			motorInterrupt1--;
+			motorInterrupt1--; 												// 모터 1 값 감소
 			encoder_right = READY;
 		}
 		break;
 		
-		case GPIO_PIN_4:
-			encoder_left = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
-		if(encoder_left == 0)
+		case GPIO_PIN_4:													// 인토더 1, 4 PIN에서 감지한 경우
+			encoder_left = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5); // 5번 핀값 읽어옴 
+		if(encoder_left == 0)												/// 읽어온 핀 값과 0 비교, 정회전인 경우
 		{
-			motorInterrupt2 ++;
-			encoder_left = READY;
+			motorInterrupt2 ++;         							// 모터2 인터럽트 값 증가, 인코더와 같다.
+			encoder_left = READY;									//  준비상태(3)로 변경 
 		}
-		else if (encoder_left == 1)
+		else if (encoder_left == 1)								// 읽어온 핀 값과 1 비교, 역회전인 경우
 		{
-			motorInterrupt2--;
+			motorInterrupt2--;												// 모터 2 값 감소
 			encoder_left = READY;
 		}
 		break;
